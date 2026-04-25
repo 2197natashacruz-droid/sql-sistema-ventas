@@ -44,22 +44,56 @@
 -- 14. Precio promedio de productos
 
 
--- 15. Suma total de precios de productos
+-- 15. Suma total de precios de productos:
+
+SELECT SUM(precio) AS suma_total_precios
+FROM productos;
 
 
 -- 16. Mostrar venta + nombre del cliente + fecha
 
+SELECT v.id_venta, 
+    c.nombre AS nombre_cliente, 
+    v.fecha
+FROM ventas v
+JOIN clientes c ON v.id_cliente = c.id_cliente
+
 
 -- 17. Mostrar detalle de ventas con id_venta + nombre producto + cantidad
+
+SELECT dv.id_venta, 
+    p.nombre AS nombre_producto, 
+    dv.cantidad
+FROM detalle_venta dv
+JOIN productos p ON dv.id_producto = p.id_producto
 
 
 -- 18. Mostrar nombre del cliente + id de venta + fecha
 
+SELECT c.nombre AS nombre_cliente,
+	v.id_venta,
+	v.fecha, 
+FROM ventas v
+JOIN clientes c  ON v.id_cliente = c.id_cliente 
+
 
 -- 19. Mostrar nombre del producto + cantidad vendida + id de venta
 
+SELECT p.nombre AS nombre_producto,
+	dv.cantidad,
+	dv.id_venta
+FROM detalle_venta dv 
+JOIN productos p  ON dv.id_producto = p.id_producto 
+
 
 -- 20. Mostrar cuántas ventas ha realizado cada cliente
+
+SELECT c.nombre AS nombre_cliente,
+	COUNT(v.id_venta)  AS cantidad_ventas
+FROM clientes c 
+LEFT JOIN ventas v ON v.id_cliente = c.id_cliente
+GROUP BY c.id_cliente,
+	c.nombre
 
 
 -- 21. Mostrar solo los clientes con más de una venta
