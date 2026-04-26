@@ -30,25 +30,30 @@ SELECT nombre, precio FROM productos;
 
 
 -- 10. Detalles de venta con cantidad >= 2
-
+SELECT *
+FROM detalle_venta
+WHERE cantidad >= 2;
 
 -- 11. Total de clientes
-
+SELECT COUNT(*) AS total_clientes
+FROM clientes;
 
 -- 12. Total de productos
-
+SELECT COUNT(*) AS total_productos
+FROM productos;
 
 -- 13. Total de ventas
-
+SELECT COUNT(*) AS total_ventas
+FROM ventas;
 
 -- 14. Precio promedio de productos
-
+SELECT AVG(precio) AS precio_promedio
+FROM productos;
 
 -- 15. Suma total de precios de productos:
 
 SELECT SUM(precio) AS suma_total_precios
 FROM productos;
-
 
 -- 16. Mostrar venta + nombre del cliente + fecha
 
