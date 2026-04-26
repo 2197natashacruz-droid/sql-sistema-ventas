@@ -3,19 +3,19 @@
 -- =====================================
 
 -- 1. Mostrar todos los clientes registrados
-
+SELECT * FROM clientes;
 
 -- 2. Mostrar todos los productos disponibles
-
+SELECT * FROM productos;
 
 -- 3. Mostrar todas las ventas realizadas
-
+SELECT * FROM ventas;
 
 -- 4. Mostrar solo nombre y email de clientes
-
+SELECT nombre, email FROM clientes;
 
 -- 5. Mostrar solo nombre y precio de productos
-
+SELECT nombre, precio FROM productos;
 
 -- 6. Productos con precio mayor a 50000
 
