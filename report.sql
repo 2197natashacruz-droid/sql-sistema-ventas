@@ -51,7 +51,6 @@ SELECT AVG(precio) AS precio_promedio
 FROM productos;
 
 -- 15. Suma total de precios de productos:
-
 SELECT SUM(precio) AS suma_total_precios
 FROM productos;
 
