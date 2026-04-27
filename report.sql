@@ -106,18 +106,39 @@ GROUP BY c.id_cliente,
 
 
 -- 21. Mostrar solo los clientes con más de una venta
-
+SELECT c.nombre AS cliente, COUNT(v.id_venta) AS total_ventas
+FROM clientes c
+JOIN ventas v ON c.id_cliente = v.id_cliente
+GROUP BY c.nombre
+HAVING COUNT(v.id_venta) > 1;
 
 -- 22. Mostrar cuántas veces aparece cada producto en detalle_venta
-
+SELECT p.nombre AS producto, COUNT(dv.id_producto) AS veces_aparece
+FROM productos p
+JOIN detalle_venta dv ON p.id_producto = dv.id_producto
+GROUP BY p.nombre
+ORDER BY veces_aparece DESC;
 
 -- 23. Mostrar solo los productos que aparecen más de una vez
-
+SELECT p.nombre AS producto, COUNT(dv.id_producto) AS veces_aparece
+FROM productos p
+JOIN detalle_venta dv ON p.id_producto = dv.id_producto
+GROUP BY p.nombre
+HAVING COUNT(dv.id_producto) > 1;
 
 -- 24. Mostrar las ventas que tienen más de un producto asociado
-
+SELECT dv.id_venta, COUNT(dv.id_producto) AS total_productos
+FROM detalle_venta dv
+GROUP BY dv.id_venta
+HAVING COUNT(dv.id_producto) > 1;
 
 -- 25. Mostrar clientes cuya suma total de unidades compradas sea mayor a 2
+SELECT c.nombre AS cliente, SUM(dv.cantidad) AS total_unidades
+FROM clientes c
+JOIN ventas v ON c.id_cliente = v.id_cliente
+JOIN detalle_venta dv ON v.id_venta = dv.id_venta
+GROUP BY c.nombre
+HAVING SUM(dv.cantidad) > 2;
 
 
 -- 26. Consulta trampa que no devuelva resultados
